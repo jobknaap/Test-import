@@ -1,8 +1,8 @@
 # Replace the text below to customize your site
-site_name: Internet of Things Documentation Page
-site_description: Documentation for <insert student name>
-site_author: <insert student name>
-copyright: Copyright 2022 <insert student name> - Creative Commons Attribution Non Commercial
+site_name: This is my site!
+site_description: Documentation for Job van der Knaap
+site_author: Job van der Knaap
+copyright: Copyright 2022 Job van der Knaap - Creative Commons Attribution Non Commercial
 
 site_url: https://localhost:8000/
   
@@ -10,14 +10,14 @@ theme:
   name: material
   palette:
     # try other colors https://squidfunk.github.io/mkdocs-material/getting-started/#primary-colors
-    primary: light blue
-    accent: indigo
+    primary: light green
+    accent: cyan
   font:
     # See available fonts at https://fonts.google.com/
     text: Arial
     code: Ubuntu Mono  
-  logo: images/iot_car.svg
-  favicon: images/iot_car.svg
+  logo: images/iot_house.svg
+  favicon: images/iot_power.svg
   features:
     - navigation.instant 
     - content.code.annotate 
