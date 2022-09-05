@@ -13,7 +13,8 @@
 ## Links
 - [Rick roll](https://youtu.be/dQw4w9WgXcQ)
 - [mkdocs index pagina](index.md)
-- [go to videos](##Videos)
+- [Go to videos](#videos)
+
 
 <center>
 
@@ -80,7 +81,7 @@ int main() {
 }
 ```
 ## Videos
-<video controls poster=""> <source src="images/Kube_animatie.mp4" type="video/mp4"></video>
+<video controls poster="/images/thumbnail.png"> <source src="/images/Kube_animatie.mp4" type="video/mp4"></video>
 
 ## admonitions
 !!! tip
