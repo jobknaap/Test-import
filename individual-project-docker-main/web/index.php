@@ -18,7 +18,7 @@
 <body>
 <div class="login-page">
     <div class="form">
-        <form class="login-form" action="homepage.php">
+        <form class="login-form" action="admin.php">
             <p>Admin login</p>
             <input type="text" placeholder="username"/>
             <input type="password" placeholder="password"/>

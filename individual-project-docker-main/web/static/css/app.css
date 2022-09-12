@@ -1,15 +1,48 @@
-html {
+body{
     max-width: 75%;
     margin: auto;
 }
 
 nav{
-    background-color: grey;
+    background-color: #333333;
     height: 30px;
     padding: 5px;
 }
 
+nav, ul, a, a:hover, a:focus, a:active{
+    text-decoration: none;
+    color: white;
+}
+
+nav, ul, a:hover{
+    color: #04AA6D;
+}
+
+ul { 
+    display: inline;
+}
+
 li {
     display: inline;
-    margin-top: -10px;
+    color: white;
+}
+
+ul :first-child{
+    font-size: x-large;
+}
+
+.navbar-items {
+    float: right;
+}
+
+.navbar-items :first-child{
+    margin-right: 20px;
+}
+
+#navbar-title{
+    float: left;
+}
+
+.active{
+    color: #04AA6D;
 }
