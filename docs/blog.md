@@ -31,5 +31,3 @@ The first week was a bootcamp week which means that we learned something new eve
 <u>What I learned:</u> Didn't learn that much, it was mostly just following the steps. I do now know how to add enviroment paths and to clear up my ports.<br><br>
 **Fourth day:** We got to learn 3D printing but it was really simplified which I like because modeling etc. Is very difficult. We had to search premade models, change the settings and then upload them on a usb-drive to see the magic happen. It was fun seeing it come to life.<br>
 <u>What I learned:</u> I learned a bit about the settings and time management, but that is just about it.
-
----
