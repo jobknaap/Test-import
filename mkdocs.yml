@@ -27,6 +27,7 @@ nav:
       - 'Feedback' : 'feedback.md'
       - 'Arduino/Wemos' : 'AW.md'
       - 'Web application' : 'web_application.md'
+      - 'Daily blog' : 'blog.md'
     - 'Product' :
       - 'Product Description' : 'product.md'
       - 'User Manual' : 'user_manual.md'
