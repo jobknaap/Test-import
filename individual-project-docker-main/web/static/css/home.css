@@ -1,0 +1,35 @@
+.tracker-container{
+    max-width: 60%;
+    min-width: 600px;
+    margin: auto;
+    position: relative;
+}
+
+.in-office-container{
+    position: absolute;
+}
+
+.in-office-container th{
+    font-size: large;
+}
+
+.in-office-container td{
+    padding: 5px;
+    font-size: medium;
+    text-align: center;
+}
+
+.check-in-container{
+    position: absolute;
+    right: 0;
+}
+
+.check-in-container th{
+    font-size: large;
+}
+
+.check-in-container td{
+    padding: 5px;
+    font-size: medium;
+    text-align: center;
+}

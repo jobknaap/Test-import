@@ -19,7 +19,58 @@
     </nav>
 </header>
 <body>
-    <h1>Test :)</h1>
+    <div class="tracker-container">
+        <div class="in-office-container">
+            <h1>In the office</h1>
+            <table>
+                <thead>
+                    <th>Status</th>
+                    <th>Employee</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="/static/images/inactive.png" alt="Small red orb to display checked-out personnel."></td>
+                        <td>Dwight Schrute</td>
+                    </tr>
+                    <tr>
+                        <td><img src="/static/images/active.png" alt="Small green orb to display checked-out personnel."></td>
+                        <td>Michael Scott</td>
+                    </tr>
+                    <tr>
+                        <td><img src="/static/images/active.png" alt="Small green orb to display checked-out personnel."></td>
+                        <td>Michael Scott</td>
+                    </tr>
+                    <tr>
+                        <td><img src="/static/images/inactive.png" alt="Small red orb to display checked-out personnel."></td>
+                        <td>Michael Scott</td>
+                    </tr>
+                    <tr>
+                        <td><img src="/static/images/active.png" alt="Small green orb to display checked-out personnel."></td>
+                        <td>Michael Scott</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="check-in-container">
+            <h1>Last check-in & - outs</h1>
+            <table>
+                <thead>
+                    <th>Employee</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Michael Scott</td>
+                        <td>14-09-2022</td>
+                        <td>13:33</td>
+                        <td>Checked-in</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 <footer>
 
