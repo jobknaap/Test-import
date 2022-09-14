@@ -2,7 +2,6 @@
 
 ### 14-09-2022
 
-
 ---
 
 ### 13-09-2022
@@ -14,12 +13,12 @@ Today I stayed at home because I wasn't feeling that great sadly I also didn't w
 ### 12-09-2022
 Today was the first day to work on our project I started off by working on the database and the website. It was a very long time ago since I coded html/css so I was bit rusty, had to look up a lot of basic things. But after a while it started to come back to me. I also tested with some PHP, just some basic GET request from the database to retrieve my data. And after that I started to design my webpage more.<br>
 **What I learned:** As I stated before a lot of re-learning old html/css, luckily didn't run in any issues. And also having to design an ERD was quite fun, here is an example of the design and this wednesday I will be asking some feedback from mats to improve my design.<br>
-![First ERD design.](/images/DatabaseStructure.drawio.svg)
+![First ERD design.](images/DatabaseStructure.drawio.svg)
 
 ---
 
 ### Bootcamp (week1)
-I only started this blog in the seccond week of school so sadly i'm not sure what i did every day, so for the first week it will be a summary.<br><br>
+I only started this blog in the seccond week of school so sadly i'm not sure what i did every day, so for the first week it will be a summary.<br>
 
 The first week was a bootcamp week which means that we learned something new everyday.<br><br>
 
