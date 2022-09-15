@@ -45,6 +45,7 @@ nav:
       - 'Create' : 'create.md'
       - 'Conclusion & reflection' : 'cr.md'
     - 'User Interaction' : 'user_interaction.md'
+    - 'Daily blog' : 'blog.md'
 
 plugins:
   - search
