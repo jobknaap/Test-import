@@ -19,7 +19,49 @@
     </nav>
 </header>
 <body>
-    <h1>Test :)</h1>
+    <div class="employees-container">
+        <h1>Employees</h1>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Phone number</th>
+                <th>RFID</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Michael</td>
+                    <td>Scott</td>
+                    <td>0612345678</td>
+                    <td>237,131,63,89,8</td>
+                    <td>
+                        <a href="#"><img src="/static/images/edit.png" alt="Edit icon."></a>
+                        <a href="#"><img src="/static/images/delete.png" alt="Delete icon."></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Michael</td>
+                    <td>Scott</td>
+                    <td>0612345678</td>
+                    <td>237,131,63,89,8</td>
+                    <td>
+                        <a href="#"><img src="/static/images/edit.png" alt="Edit icon."></a>
+                        <a href="#"><img src="/static/images/delete.png" alt="Delete icon."></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Michael</td>
+                    <td>Scott</td>
+                    <td>0612345678</td>
+                    <td>237,131,63,89,8</td>
+                    <td>
+                        <a href="#"><img src="/static/images/edit.png" alt="Edit icon."></a>
+                        <a href="#"><img src="/static/images/delete.png" alt="Delete icon."></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 <footer>
 

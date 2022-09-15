@@ -1,6 +1,15 @@
 # Daily blog
 
+### 15-09-2022
+Today I started working on the RFID scanner. First I went and looked at the dlo page about the scanner and got some great info on how it works. Then I went to https://www.velleman.eu/ to see the schematic and wiring diagram of the RFID. This was amazing I found some arduino sketches to test out the sensor. The benefit of these sketches is that I can use them as a base for my project. I also found a file containing how to write the cards, this was quite menacing as it was a lot of information and code. Once I got home I realised I forgot a page so I updated the administration page to have a CRUD table.<br>
+I firstly opened the wrong sketch wich was the write sketch. After compiling the code I didn't really understand what was going on, then I found on the site the "simple" code which gave me much more confidence.<br>
+**What I learned:**  I learned a lot on how RFID but also how NFC works. Like for example the wavelengths and how the chip gets powered by the reader.
+
+---
+
 ### 14-09-2022
+Today I got the feedback from mats about my ERD and I changed a few things like removing employer and created the design to fit mats his feedback. I also asked him about the ID of the RFID and he said I should just get the device and check the data myself. After this I finished the design of my website and gonna ask some feedback for the design of my web page.<br>
+**What I learned:** Not that much, mostly some html/css and the improvement of my database. I see what I did wrong and try to not make the same mistake.
 
 ---
 
