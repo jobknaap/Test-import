@@ -1,3 +1,11 @@
+<?php
+session_start();
+require "config.php";
+if(!isset($_SESSION['employee'])){
+    header("Location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +19,8 @@
 <header>
     <nav>
         <ul>
-            <li>Time management</li>
-            <li class="navbar-items"><a href="#">Log out</a></li>
+            <li>Time management - <?php echo $_SESSION['employee']['name'] . " " . $_SESSION['employee']['surname'];?></li>
+            <li class="navbar-items"><a href="logout.php">Log out</a></li>
             <li class="navbar-items"><a href="data.php" class="active">Administration</a></li>
             <li class="navbar-items"><a href="admin.php">Tracker</a></li>
         </ul>

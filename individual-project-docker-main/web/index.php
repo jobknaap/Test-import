@@ -1,5 +1,25 @@
 <?php
-    include "config.php";
+    session_start();
+    require "config.php";
+
+    if (isset($_POST['email']) and isset($_POST['password'])){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $query = "SELECT * FROM `employee` WHERE email='$email' AND password='$password'";
+         
+        $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+        $results = mysqli_fetch_assoc($result);
+        $count = mysqli_num_rows($result);
+        if ($count == 1){
+            $_SESSION['employee'] = $results;
+        }else{
+            echo '<script>alert("Wrong credentials, try again.")</script>';
+        }
+    }
+
+    if (isset($_SESSION['employee'])){
+        header("Location: admin.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -18,10 +38,10 @@
 <body>
 <div class="login-page">
     <div class="form">
-        <form class="login-form" action="admin.php">
+        <form class="login-form" method="POST">
             <p>Admin login</p>
-            <input type="text" placeholder="username"/>
-            <input type="password" placeholder="password"/>
+            <input type="email" name="email" placeholder="email"/>
+            <input type="password" name="password" placeholder="password"/>
             <input type="submit" value="login">
         </form>
     </div>

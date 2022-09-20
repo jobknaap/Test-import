@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    require "config.php";
+    if(!isset($_SESSION['employee'])){
+        header("Location: index.php");
+    }
+
+    $sql = "SELECT employee.name, employee.surname, rfid.checked_in FROM rfid INNER JOIN employee ON rfid.id = employee.rfid_id";
+    $result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +22,8 @@
 <header>
     <nav>
         <ul>
-            <li>Time management</li>
-            <li class="navbar-items"><a href="#">Log out</a></li>
+            <li>Time management - <?php echo $_SESSION['employee']['name'] . " " . $_SESSION['employee']['surname'];?></li>
+            <li class="navbar-items"><a href="logout.php">Log out</a></li>
             <li class="navbar-items"><a href="data.php">Administration</a></li>
             <li class="navbar-items"><a href="admin.php" class="active">Tracker</a></li>
         </ul>
@@ -28,26 +39,19 @@
                     <th>Employee</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><img src="/static/images/inactive.png" alt="Small red orb to display checked-out personnel."></td>
-                        <td>Dwight Schrute</td>
-                    </tr>
-                    <tr>
-                        <td><img src="/static/images/active.png" alt="Small green orb to display checked-out personnel."></td>
-                        <td>Michael Scott</td>
-                    </tr>
-                    <tr>
-                        <td><img src="/static/images/active.png" alt="Small green orb to display checked-out personnel."></td>
-                        <td>Michael Scott</td>
-                    </tr>
-                    <tr>
-                        <td><img src="/static/images/inactive.png" alt="Small red orb to display checked-out personnel."></td>
-                        <td>Michael Scott</td>
-                    </tr>
-                    <tr>
-                        <td><img src="/static/images/active.png" alt="Small green orb to display checked-out personnel."></td>
-                        <td>Michael Scott</td>
-                    </tr>
+                    <?php foreach($result as $row => $value): ?>
+                        <tr>
+                            <td><?php 
+                                    if($value['checked_in'] == 0){
+                                        echo '<img src="/static/images/inactive.png" alt="Small red orb to display checked-out personnel.">';
+                                    }else{
+                                        echo '<img src="/static/images/active.png" alt="Small green orb to display checked-out personnel.">';
+                                    }
+                                ?>
+                            </td>
+                            <td><?=$value['name'] . " " . $value['surname'];?></td>
+                        </tr>
+                    <?php endforeach;?>
                 </tbody>
             </table>
         </div>
