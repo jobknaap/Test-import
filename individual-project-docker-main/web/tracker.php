@@ -15,8 +15,11 @@
     }
 
     // Query to get the correct data from the employees and insert data into to variable.
-    $sql = "SELECT Employee.name, Employee.surname, CheckIn.checked_in FROM Employee INNER JOIN CheckIn ON Employee.employee_id = CheckIn.employee_id";
-    $result = $conn->query($sql);
+    $status = "SELECT Employee.name, Employee.surname, CheckIn.checked_in FROM Employee INNER JOIN CheckIn ON Employee.employee_id = CheckIn.employee_id";
+    $statusResult = $conn->query($status);
+
+    $tracker = "SELECT Employee.name, Employee.surname, CheckIn.checked_in, CheckIn.date_time FROM Employee INNER JOIN CheckIn ON Employee.employee_id = CheckIn.employee_id ORDER BY date_time DESC LIMIT 10";
+    $trackerResult = $conn->query($tracker);
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +58,7 @@
                 <tbody>
                     <?php
                         // For loop to show the data in the table.
-                        foreach($result as $row => $value):
+                        foreach($statusResult as $row => $value):
                     ?>
                         <tr>
                             <td>
@@ -75,7 +78,7 @@
                                 ?>
                             </td>
                         </tr>
-                    <?php endforeach;?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -89,12 +92,35 @@
                     <th>Status</th>
                 </thead>
                 <tbody>
+                    <?php
+                        // For loop to show the data in the table.
+                        foreach($trackerResult as $row => $value):
+                    ?>
                     <tr>
-                        <td>Michael Scott</td>
-                        <td>14-09-2022</td>
-                        <td>13:33</td>
-                        <td>Checked-in</td>
+                        <td>
+                            <?=
+                                // Display employees full name. 
+                                $value['name'] . " " . $value['surname']
+                            ?>
+                        </td>
+                        <td>
+                            <?= date('Y-m-d', strtotime($value['date_time']))?>
+                        </td>
+                        <td>
+                            <?= date('H:i', strtotime($value['date_time']))?>
+                        </td>
+                        <td>
+                            <?php 
+                                // If the employee isn't "checked-in"(0) then display red otherwise display green.
+                                if($value['checked_in'] == 0){
+                                    echo 'Checked out';
+                                }else{
+                                    echo 'Checked in';
+                                }
+                            ?>
+                        </td>
                     </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
