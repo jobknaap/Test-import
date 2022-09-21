@@ -1,22 +1,3 @@
-# Database design
-
-## ERD
-My current ERD looks like this:<br>
-![Current database design(ERD)](images/ERD.png)<br>
-An employee does the action of checking in. By checking in we get a time and date and we can also see if the employee had checked in. For the employee's we can use there forename and surename as identifier, because nobody had the same name. we have a password for the employers(admins) to login on the admin page. email and phone number are used to easily retrieve contact info and email is also used to login for the admins.
-
-
----
-
-## Relational Database
-My current Relational Database in phpmyadmin:<br>
-![Current Relational Database design](images/EER.png)<br>
-
----
-
-## SQL script
-The SQL script to create my database for you.
-```MYSQL
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -75,5 +56,3 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-```
