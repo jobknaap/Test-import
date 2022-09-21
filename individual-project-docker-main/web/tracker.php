@@ -15,7 +15,7 @@
     }
 
     // Query to get the correct data from the employees and insert data into to variable.
-    $sql = "SELECT employee.name, employee.surname, rfid.checked_in FROM rfid INNER JOIN employee ON rfid.id = employee.rfid_id";
+    $sql = "SELECT Employee.name, Employee.surname, CheckIn.checked_in FROM Employee INNER JOIN CheckIn ON Employee.employee_id = CheckIn.employee_id";
     $result = $conn->query($sql);
 ?>
 

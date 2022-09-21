@@ -10,17 +10,17 @@ My index page is an login page, because the user is an admin. [Link to full file
     *   @version    V1.0
     *   Goal: the goal of this code is for an admin to login to the admin website.
     */
-    session_start();
+    session_start(); // Starts session.
     require "config.php"; // Config file for database connection.
 
-    if (isset($_POST['email']) and isset($_POST['password'])){ // Gets data from the login form.
+    if (isset($_POST['email']) and isset($_POST['password'])){ // Checks if email and password has been filled in.
         
         // Inserts values into variable.
         $email = $_POST['email'];
         $password = $_POST['password'];
 
         // adds variable to query.
-        $query = "SELECT * FROM `employee` WHERE email='$email' AND password='$password'";
+        $query = "SELECT `name`, `surname`, `email` FROM Employee WHERE email='$email' AND password='$password'";
          
         // Gets result from database and puts in the variable
         $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
@@ -37,7 +37,7 @@ My index page is an login page, because the user is an admin. [Link to full file
 
     // If the session is active go to admin page.
     if (isset($_SESSION['employee'])){
-        header("Location: admin.php");
+        header("Location: tracker.php");
     }
 ?>
 ```
@@ -65,7 +65,7 @@ This part is for retreiving the data and putting it in a variable.
     }
 
     // Query to get the correct data from the employees and insert data into to variable.
-    $sql = "SELECT employee.name, employee.surname, rfid.checked_in FROM rfid INNER JOIN employee ON rfid.id = employee.rfid_id";
+    $sql = "SELECT Employee.name, Employee.surname, CheckIn.checked_in FROM Employee INNER JOIN CheckIn ON Employee.employee_id = CheckIn.employee_id";
     $result = $conn->query($sql);
 ?>
 ```

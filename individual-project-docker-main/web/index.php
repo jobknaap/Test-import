@@ -8,14 +8,14 @@
     session_start(); // Starts session.
     require "config.php"; // Config file for database connection.
 
-    if (isset($_POST['email']) and isset($_POST['password'])){ // Gets data from the login form.
+    if (isset($_POST['email']) and isset($_POST['password'])){ // Checks if email and password has been filled in.
         
         // Inserts values into variable.
         $email = $_POST['email'];
         $password = $_POST['password'];
 
         // adds variable to query.
-        $query = "SELECT * FROM `employee` WHERE email='$email' AND password='$password'";
+        $query = "SELECT `name`, `surname`, `email` FROM Employee WHERE email='$email' AND password='$password'";
          
         // Gets result from database and puts in the variable
         $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
@@ -32,7 +32,7 @@
 
     // If the session is active go to admin page.
     if (isset($_SESSION['employee'])){
-        header("Location: admin.php");
+        header("Location: tracker.php");
     }
 ?>
 
@@ -53,8 +53,8 @@
     <div class="form">
         <form class="login-form" method="POST">
             <p>Admin login</p>
-            <input type="email" name="email" placeholder="email"/>
-            <input type="password" name="password" placeholder="password"/>
+            <input type="email" name="email" placeholder="email" required/>
+            <input type="password" name="password" placeholder="password" required/>
             <input type="submit" value="login">
         </form>
     </div>
