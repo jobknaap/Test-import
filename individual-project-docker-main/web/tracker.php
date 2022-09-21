@@ -1,12 +1,22 @@
 <?php
-    //session_start();
-    //require "config.php";
-    // if(!isset($_SESSION['employee'])){
-    //     header("Location: index.php");
-    // }
+    /**
+    *   @author     Job van der Knaap
+    *   @copyright  Job(2022)
+    *   @version    V1.0
+    *   Goal: the goal of this code is for an admin to track the employees to see if they are inside the building and track when the last person checked in or out.
+    *
+    */
+    session_start(); // Resumes session of admin.
+    require "config.php"; // Database connection.
 
-    //$sql = "SELECT employee.name, employee.surname, rfid.checked_in FROM rfid INNER JOIN employee ON rfid.id = employee.rfid_id";
-    //$result = $conn->query($sql);
+    // Checks if session is active if not return to login screen for security.
+    if(!isset($_SESSION['employee'])){
+        header("Location: index.php");
+    }
+
+    // Query to get the correct data from the employees and insert data into to variable.
+    $sql = "SELECT employee.name, employee.surname, rfid.checked_in FROM rfid INNER JOIN employee ON rfid.id = employee.rfid_id";
+    $result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +32,11 @@
 <header>
     <nav>
         <ul>
-            <li>Time management - <?php //echo $_SESSION['employee']['name'] . " " . $_SESSION['employee']['surname'];?></li>
+            <li>Time management -
+                <?php
+                    echo $_SESSION['employee']['name'] . " " . $_SESSION['employee']['surname']; // Display the user who is active in the session
+                ?>
+            </li>
             <li class="navbar-items"><a href="logout.php">Log out</a></li>
             <li class="navbar-items"><a href="admin.php">Administration</a></li>
             <li class="navbar-items"><a href="tracker.php" class="active">Tracker</a></li>
@@ -39,9 +53,14 @@
                     <th>Employee</th>
                 </thead>
                 <tbody>
-                    <?php foreach($result as $row => $value): ?>
+                    <?php
+                        // For loop to show the data in the table.
+                        foreach($result as $row => $value):
+                    ?>
                         <tr>
-                            <td><?php 
+                            <td>
+                                <?php 
+                                    // If the employee isn't "checked-in"(0) then display red otherwise display green.
                                     if($value['checked_in'] == 0){
                                         echo '<img src="/static/images/inactive.png" alt="Small red orb to display checked-out personnel.">';
                                     }else{
@@ -49,7 +68,12 @@
                                     }
                                 ?>
                             </td>
-                            <td><?=$value['name'] . " " . $value['surname'];?></td>
+                            <td>
+                                <?=
+                                    // Displays employees full names.
+                                    $value['name'] . " " . $value['surname'];
+                                ?>
+                            </td>
                         </tr>
                     <?php endforeach;?>
                 </tbody>

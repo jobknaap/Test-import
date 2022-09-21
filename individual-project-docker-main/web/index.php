@@ -1,15 +1,28 @@
 <?php
-    session_start();
-    require "config.php";
+    /**
+    *   @author     Job van der Knaap
+    *   @copyright  Job(2022)
+    *   @version    V1.0
+    *   Goal: the goal of this code is for an admin to login to the admin website.
+    */
+    session_start(); // Starts session.
+    require "config.php"; // Config file for database connection.
 
-    if (isset($_POST['email']) and isset($_POST['password'])){
+    if (isset($_POST['email']) and isset($_POST['password'])){ // Gets data from the login form.
+        
+        // Inserts values into variable.
         $email = $_POST['email'];
         $password = $_POST['password'];
+
+        // adds variable to query.
         $query = "SELECT * FROM `employee` WHERE email='$email' AND password='$password'";
          
+        // Gets result from database and puts in the variable
         $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
-        $results = mysqli_fetch_assoc($result);
-        $count = mysqli_num_rows($result);
+        $results = mysqli_fetch_assoc($result); // Full array of data
+        $count = mysqli_num_rows($result); // Counts the amount of arrays retrieved
+
+        // Checks if there is one result then proceeds to insert data into the session, otherwise display error.
         if ($count == 1){
             $_SESSION['employee'] = $results;
         }else{
@@ -17,6 +30,7 @@
         }
     }
 
+    // If the session is active go to admin page.
     if (isset($_SESSION['employee'])){
         header("Location: admin.php");
     }
