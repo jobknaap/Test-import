@@ -1,7 +1,7 @@
 # Back-end
 
 ### Index.php
-My index page is an login page, because the user is an admin. [Link to full file]([/individual-project-docker-main/web/index.php](https://gitlab.fdmci.hva.nl/IoT/2022-2023-sep-jan/individual-project/iot-knaapj/-/blob/main/individual-project-docker-main/web/index.php))<br>
+My index page is an login page, because the user is an admin. [Link to full file](https://gitlab.fdmci.hva.nl/IoT/2022-2023-sep-jan/individual-project/iot-knaapj/-/blob/main/individual-project-docker-main/web/index.php)<br>
 ``` PHP
 <?php
     /**
@@ -45,7 +45,7 @@ My index page is an login page, because the user is an admin. [Link to full file
 ---
 
 ### Tracker.php
-The traker page is to see which employee is in or outside the building and also to see the latest check-ins or -outs. [Link to full file]([/individual-project-docker-main/web/tracker.php](https://gitlab.fdmci.hva.nl/IoT/2022-2023-sep-jan/individual-project/iot-knaapj/-/blob/main/individual-project-docker-main/web/tracker.php))<br><br>
+The traker page is to see which employee is in or outside the building and also to see the latest check-ins or -outs. [Link to full file](https://gitlab.fdmci.hva.nl/IoT/2022-2023-sep-jan/individual-project/iot-knaapj/-/blob/main/individual-project-docker-main/web/tracker.php)<br><br>
 This part is for retreiving the data and putting it in a variable.
 ``` PHP
 <?php
@@ -72,79 +72,98 @@ This part is for retreiving the data and putting it in a variable.
     $trackerResult = $conn->query($tracker);
 ?>
 ```
-<br> This part is to display the tracker of the people who are in or outside the building.
-``` PHP
-    <table>
-        <thead>
-            <th>Status</th>
-            <th>Employee</th>
-        </thead>
-        <tbody>
-            <?php
-                // For loop to show the data in the table.
-                foreach($result as $row => $value):
-            ?>
+
+??? Display status tracker
+    This part is to display the status of the people who are in or outside. the building.
+    ``` PHP
+        <table>
+            <thead>
+                <th>Status</th>
+                <th>Employee</th>
+            </thead>
+            <tbody>
+                <?php
+                    // For loop to show the data in the table.
+                    foreach($result as $row => $value):
+                ?>
+                    <tr>
+                        <td>
+                            <?php 
+                                // If the employee isn't "checked-in"(0) then display red otherwise display green.
+                                if($value['checked_in'] == 0){
+                                    echo '<img src="/static/images/inactive.png" alt="Small red orb to display checked-out personnel.">';
+                                }else{
+                                    echo '<img src="/static/images/active.png" alt="Small green orb to display checked-out personnel.">';
+                                }
+                            ?>
+                        </td>
+                        <td>
+                            <?=
+                                // Displays employees full names.
+                                $value['name'] . " " . $value['surname'];
+                            ?>
+                        </td>
+                    </tr>
+                <?php endforeach;?>
+            </tbody>
+        </table>
+    ```
+
+??? Display status tracker
+    This part is to display the last check in and outs.
+    ``` PHP
+        <table>
+            <thead>
+                <th>Employee</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+            </thead>
+            <tbody>
+                <?php
+                    // For loop to show the data in the table.
+                    foreach($trackerResult as $row => $value):
+                ?>
                 <tr>
+                    <td>
+                        <?=
+                            // Display employees full name. 
+                            $value['name'] . " " . $value['surname']
+                        ?>
+                    </td>
+                    <td>
+                        <?= date('Y-m-d', strtotime($value['date_time']))?>
+                    </td>
+                    <td>
+                        <?= date('H:i', strtotime($value['date_time']))?>
+                    </td>
                     <td>
                         <?php 
                             // If the employee isn't "checked-in"(0) then display red otherwise display green.
                             if($value['checked_in'] == 0){
-                                echo '<img src="/static/images/inactive.png" alt="Small red orb to display checked-out personnel.">';
+                                echo 'Checked out';
                             }else{
-                                echo '<img src="/static/images/active.png" alt="Small green orb to display checked-out personnel.">';
+                                echo 'Checked in';
                             }
                         ?>
                     </td>
-                    <td>
-                        <?=
-                            // Displays employees full names.
-                            $value['name'] . " " . $value['surname'];
-                        ?>
-                    </td>
                 </tr>
-            <?php endforeach;?>
-        </tbody>
-    </table>
-```
-<br> This part is to display the last check in and outs.
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    ```
+
+---
+
+### Logout.php
+Small line of code that logs out the admin.[Link to file](https://gitlab.fdmci.hva.nl/IoT/2022-2023-sep-jan/individual-project/iot-knaapj/-/blob/main/individual-project-docker-main/web/logout.php)<br>
+
 ``` PHP
-    <table>
-        <thead>
-            <th>Employee</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Status</th>
-        </thead>
-        <tbody>
-            <?php
-                // For loop to show the data in the table.
-                foreach($trackerResult as $row => $value):
-            ?>
-            <tr>
-                <td>
-                    <?=
-                        // Display employees full name. 
-                        $value['name'] . " " . $value['surname']
-                    ?>
-                </td>
-                <td>
-                    <?= date('Y-m-d', strtotime($value['date_time']))?>
-                </td>
-                <td>
-                    <?= date('H:i', strtotime($value['date_time']))?>
-                </td>
-                <td>
-                    <?php 
-                        // If the employee isn't "checked-in"(0) then display red otherwise display green.
-                        if($value['checked_in'] == 0){
-                            echo 'Checked out';
-                        }else{
-                            echo 'Checked in';
-                        }
-                    ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+<?php
+    session_start(); // Resumes session
+
+    // Removes current session and redirects to the login screen.
+    unset($_SESSION["employee"]); 
+    header("Location:index.php")
+?>
 ```
