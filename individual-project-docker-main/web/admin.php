@@ -1,12 +1,9 @@
 <?php
-    session_start();
-    require "config.php";
-    if(!isset($_SESSION['employee'])){
-        header("Location: index.php");
-    }
-
-    $sql = "SELECT employee.name, employee.surname, rfid.checked_in FROM rfid INNER JOIN employee ON rfid.id = employee.rfid_id";
-    $result = $conn->query($sql);
+// session_start();
+// require "config.php";
+// if(!isset($_SESSION['employee'])){
+//     header("Location: index.php");
+// }
 ?>
 
 <!DOCTYPE html>
@@ -16,68 +13,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/app.css">
-    <link rel="stylesheet" href="/static/css/home.css">
-    <title>Tracker</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <title>Administration</title>
 </head>
 <header>
     <nav>
         <ul>
-            <li>Time management - <?php echo $_SESSION['employee']['name'] . " " . $_SESSION['employee']['surname'];?></li>
+            <li>Time management - <?php //echo $_SESSION['employee']['name'] . " " . $_SESSION['employee']['surname'];?></li>
             <li class="navbar-items"><a href="logout.php">Log out</a></li>
-            <li class="navbar-items"><a href="data.php">Administration</a></li>
-            <li class="navbar-items"><a href="admin.php" class="active">Tracker</a></li>
+            <li class="navbar-items"><a href="admin.php" class="active">Administration</a></li>
+            <li class="navbar-items"><a href="tracker.php">Tracker</a></li>
         </ul>
     </nav>
 </header>
 <body>
-    <div class="tracker-container">
-        <div class="in-office-container">
-            <h1>In the office</h1>
-            <table>
-                <thead>
-                    <th>Status</th>
-                    <th>Employee</th>
-                </thead>
-                <tbody>
-                    <?php foreach($result as $row => $value): ?>
-                        <tr>
-                            <td><?php 
-                                    if($value['checked_in'] == 0){
-                                        echo '<img src="/static/images/inactive.png" alt="Small red orb to display checked-out personnel.">';
-                                    }else{
-                                        echo '<img src="/static/images/active.png" alt="Small green orb to display checked-out personnel.">';
-                                    }
-                                ?>
-                            </td>
-                            <td><?=$value['name'] . " " . $value['surname'];?></td>
-                        </tr>
-                    <?php endforeach;?>
-                </tbody>
-            </table>
-        </div>
-        <div class="check-in-container">
-            <h1>Last check-in & - outs</h1>
-            <table>
-                <thead>
-                    <th>Employee</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Status</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Michael Scott</td>
-                        <td>14-09-2022</td>
-                        <td>13:33</td>
-                        <td>Checked-in</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="employees-container">
+        <h1>Employees</h1>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Phone number</th>
+                <th>RFID</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Michael</td>
+                    <td>Scott</td>
+                    <td>0612345678</td>
+                    <td>237,131,63,89,8</td>
+                    <td>
+                        <a href="#"><img src="/static/images/edit.png" alt="Edit icon."></a>
+                        <a href="#"><img src="/static/images/delete.png" alt="Delete icon."></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Michael</td>
+                    <td>Scott</td>
+                    <td>0612345678</td>
+                    <td>237,131,63,89,8</td>
+                    <td>
+                        <a href="#"><img src="/static/images/edit.png" alt="Edit icon."></a>
+                        <a href="#"><img src="/static/images/delete.png" alt="Delete icon."></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Michael</td>
+                    <td>Scott</td>
+                    <td>0612345678</td>
+                    <td>237,131,63,89,8</td>
+                    <td>
+                        <a href="#"><img src="/static/images/edit.png" alt="Edit icon."></a>
+                        <a href="#"><img src="/static/images/delete.png" alt="Delete icon."></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 <footer>
 
 </footer>
 </html>
-
