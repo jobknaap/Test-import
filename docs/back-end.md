@@ -1,7 +1,7 @@
 # Back-end
 
 ### Index.php
-My index page is an login page, because the user is an admin. [Link to full file](/individual-project-docker-main/web/index.php)<br>
+My index page is an login page, because the user is an admin. [Link to full file]([/individual-project-docker-main/web/index.php](https://gitlab.fdmci.hva.nl/IoT/2022-2023-sep-jan/individual-project/iot-knaapj/-/blob/main/individual-project-docker-main/web/index.php))<br>
 ``` PHP
 <?php
     /**
@@ -45,7 +45,7 @@ My index page is an login page, because the user is an admin. [Link to full file
 ---
 
 ### Tracker.php
-The traker page is to see which employee is in or outside the building and also to see the latest check-ins or -outs. [Link to full file](/individual-project-docker-main/web/tracker.php)<br><br>
+The traker page is to see which employee is in or outside the building and also to see the latest check-ins or -outs. [Link to full file]([/individual-project-docker-main/web/tracker.php](https://gitlab.fdmci.hva.nl/IoT/2022-2023-sep-jan/individual-project/iot-knaapj/-/blob/main/individual-project-docker-main/web/tracker.php))<br><br>
 This part is for retreiving the data and putting it in a variable.
 ``` PHP
 <?php
