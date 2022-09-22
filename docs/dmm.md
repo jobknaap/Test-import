@@ -1,0 +1,5 @@
+# Digital manufacturing & material
+
+For the wooden box I will be using 6mm MDF, because I still have a lot of that from my previous project and also it is very sturdy and fun to work with. I will be lasercutting the top box where all the components will be in. For me it is easier because you can for example leave the back open untill the end of the project and still work on the components. Lasercutting is very fast so I will be able to create a big box without taking it too much time.<br><br>
+The pedestal will be made from PLA, because our school sadly only uses PLA. Nevertheless it is a great compound and sturdy enough for my concept. I found already some designs for clamps for on the table to make sure the box won't tip over if you accidentally bump it. These are quite small to produce and too intricate to make from hand or lasercutting.<br><br>
+I'm gonna be glueing the box together and use bolts and nuts to attach the box to the pedestal. So I will create some holes in the bottom to easily attach them.
