@@ -1,8 +1,13 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
 .employees-container{
     max-width: 75%;
     min-width: 600px;
     margin: auto;
     position: relative;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .employees-container table{
@@ -15,6 +20,10 @@
     padding-bottom: 12px;
     background-color: #333333;
     color: white;
+}
+
+.employees-container tr:nth-child(odd){
+    background-color: white;
 }
 
 .employees-container tr:nth-child(even){

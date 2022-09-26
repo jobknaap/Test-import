@@ -1,35 +1,79 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
 .tracker-container{
-    max-width: 75%;
-    min-width: 600px;
+    max-width: 55%;
+    min-width: 750px;
     margin: auto;
     position: relative;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.tracker-container h1{
+    text-align: center;
+    color: black;
 }
 
 .in-office-container{
     position: absolute;
+    color: white;
+}
+
+.in-office-container table{
+    background-color: rgba(51, 51, 51, 0.7);
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .in-office-container th{
     font-size: large;
 }
 
+.in-office-container th:last-child{
+    text-align: start;
+    padding-left: 30px;
+}
+
 .in-office-container td{
     padding: 5px;
     font-size: medium;
-    text-align: center;
+}
+
+.in-office-container td:last-child{
+    padding-left: 30px;
 }
 
 .check-in-container{
     position: absolute;
     right: 0;
+    color: white;
+}
+
+.check-in-container table{
+    background-color: rgba(51, 51, 51, 0.7);
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    color: white;
 }
 
 .check-in-container th{
     font-size: large;
+    text-align: start;
+    padding-left: 30px;
+}
+
+.check-in-container th:first-child{
+    padding-left: 0px;
 }
 
 .check-in-container td{
-    padding: 5px;
+    padding: 5px 5px 5px 31px;
     font-size: medium;
-    text-align: center;
+}
+
+.check-in-container td:first-child{
+    padding-left: 1px;
 }
