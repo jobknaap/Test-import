@@ -1,0 +1,5 @@
+# Design
+For the design I worked with Illustrator because I have a lot of experience with this program. For this current design I decided to create the pedestal later in the project because I firstly want a working cube and then improve it. I used different colors for certain lines to have different values on the cut. <br>
+I used the website https://www.makercase.com/ to generate a box design for the bent curves. Then I loaded the design in illustrator and added my holes and designs on the box.<br>
+I went and measured all the devices and added some more space for cables and future components. [Here](https://gitlab.fdmci.hva.nl/IoT/2022-2023-sep-jan/individual-project/iot-knaapj/-/blob/main/Design/measurements.txt) is a text docuement with all the measurements I found. <br><br>
+[Link to design AI file](https://gitlab.fdmci.hva.nl/IoT/2022-2023-sep-jan/individual-project/iot-knaapj/-/blob/main/Design/scanner_box.ai) & [Link to DXF file](https://gitlab.fdmci.hva.nl/IoT/2022-2023-sep-jan/individual-project/iot-knaapj/-/blob/main/Design/scanner_box.dxf)
