@@ -1,9 +1,9 @@
 <?php
-// session_start();
-// require "config.php";
-// if(!isset($_SESSION['employee'])){
-//     header("Location: index.php");
-// }
+session_start();
+require "config.php";
+if(!isset($_SESSION['employee'])){
+    header("Location: index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
 <header>
     <nav>
         <ul>
-            <li>Time management - <?php //echo $_SESSION['employee']['name'] . " " . $_SESSION['employee']['surname'];?></li>
+            <li>Time management - <?php echo $_SESSION['employee']['name'] . " " . $_SESSION['employee']['surname']; ?></li>
             <li class="navbar-items"><a href="logout.php">Log out</a></li>
             <li class="navbar-items"><a href="admin.php" class="active">Administration</a></li>
             <li class="navbar-items"><a href="tracker.php">Tracker</a></li>
