@@ -76,4 +76,25 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+-- -----------------------------------------------------
+-- Data for table `IoT`.`Employee`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `IoT`;
+INSERT INTO `IoT`.`Employee` (`employee_id`, `name`, `surname`, `email`, `phone_number`, `password`, `rfid`) VALUES (1, 'Job', 'van der Knaap', 'job.vd.knaap@hotmail.com', 0612345678, 'Passw0rd', '237,131,63,89,8');
+INSERT INTO `IoT`.`Employee` (`employee_id`, `name`, `surname`, `email`, `phone_number`, `password`, `rfid`) VALUES (2, 'Mats', 'Otten', 'motten@hva.nl', 0687654321, 'Test123', '243,90,36,21,152');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `IoT`.`CheckIn`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `IoT`;
+INSERT INTO `IoT`.`CheckIn` (`check_in_id`, `checked_in`, `date_time`, `employee_id`) VALUES (1, 0, '2022-09-21 14:38:00', 1);
+INSERT INTO `IoT`.`CheckIn` (`check_in_id`, `checked_in`, `date_time`, `employee_id`) VALUES (2, 1, '2022-09-26 11:02:00', 1);
+INSERT INTO `IoT`.`CheckIn` (`check_in_id`, `checked_in`, `date_time`, `employee_id`) VALUES (3, 1, '2022-09-26 11:05:00', 2);
+
+COMMIT;
 ```
