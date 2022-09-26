@@ -1,0 +1,5 @@
+Measurements:
+Display face = W: 70mm, L: 24mm, Led: H: 13mm, W: 5mm
+Arduino plate = W: 55mm, L:70mm speling 60mm voor usb
+Wemos + mini breadboard = W:35mm, L: 50mm speling 45mm
+RFID plate = W: 40mm, L: 61mm speling kabels 20mm
