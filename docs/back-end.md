@@ -73,41 +73,43 @@ This part is for retreiving the data and putting it in a variable.
 ?>
 ```
 
-This part is to display the status of the people who are in or outside. the building.
-``` PHP
-    <table>
-        <thead>
-            <th>Status</th>
-            <th>Employee</th>
-        </thead>
-        <tbody>
-            <?php
-                // For loop to show the data in the table.
-                foreach($result as $row => $value):
-            ?>
-                <tr>
-                    <td>
-                        <?php 
-                            // If the employee isn't "checked-in"(0) then display red otherwise display green.
-                            if($value['checked_in'] == 0){
-                                echo '<img src="/static/images/inactive.png" alt="Small red orb to display checked-out personnel.">';
-                            }else{
-                                echo '<img src="/static/images/active.png" alt="Small green orb to display checked-out personnel.">';
-                            }
-                        ?>
-                    </td>
-                    <td>
-                        <?=
-                            // Displays employees full names.
-                            $value['name'] . " " . $value['surname'];
-                        ?>
-                    </td>
-                </tr>
-            <?php endforeach;?>
-        </tbody>
-    </table>
-```
+??? Table_status
+    This part is to display the status of the people who are in or outside. the building.
+    ``` PHP
+        <table>
+            <thead>
+                <th>Status</th>
+                <th>Employee</th>
+            </thead>
+            <tbody>
+                <?php
+                    // For loop to show the data in the table.
+                    foreach($result as $row => $value):
+                ?>
+                    <tr>
+                        <td>
+                            <?php 
+                                // If the employee isn't "checked-in"(0) then display red otherwise display green.
+                                if($value['checked_in'] == 0){
+                                    echo '<img src="/static/images/inactive.png" alt="Small red orb to display checked-out personnel.">';
+                                }else{
+                                    echo '<img src="/static/images/active.png" alt="Small green orb to display checked-out personnel.">';
+                                }
+                            ?>
+                        </td>
+                        <td>
+                            <?=
+                                // Displays employees full names.
+                                $value['name'] . " " . $value['surname'];
+                            ?>
+                        </td>
+                    </tr>
+                <?php endforeach;?>
+            </tbody>
+        </table>
+    ```
 
+??? Table_tracker
 This part is to display the last check in and outs.
 ``` PHP
     <table>

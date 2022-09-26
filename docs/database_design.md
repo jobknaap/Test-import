@@ -15,7 +15,7 @@ My current Relational Database in phpmyadmin:<br>
 ---
 
 ## SQL script
-The SQL script to create my database for you.
+The SQL script to create my database for you. [Link to SQL script](https://gitlab.fdmci.hva.nl/IoT/2022-2023-sep-jan/individual-project/iot-knaapj/-/blob/main/Database/Time_management.sql)
 ```MYSQL
 -- MySQL Workbench Forward Engineering
 
