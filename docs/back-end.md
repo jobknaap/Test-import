@@ -110,48 +110,48 @@ This part is for retreiving the data and putting it in a variable.
     ```
 
 ??? Table_tracker
-This part is to display the last check in and outs.
-``` PHP
-    <table>
-        <thead>
-            <th>Employee</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Status</th>
-        </thead>
-        <tbody>
-            <?php
-                // For loop to show the data in the table.
-                foreach($trackerResult as $row => $value):
-            ?>
-            <tr>
-                <td>
-                    <?=
-                        // Display employees full name. 
-                        $value['name'] . " " . $value['surname']
-                    ?>
-                </td>
-                <td>
-                    <?= date('Y-m-d', strtotime($value['date_time']))?>
-                </td>
-                <td>
-                    <?= date('H:i', strtotime($value['date_time']))?>
-                </td>
-                <td>
-                    <?php 
-                        // If the employee isn't "checked-in"(0) then display red otherwise display green.
-                        if($value['checked_in'] == 0){
-                            echo 'Checked out';
-                        }else{
-                            echo 'Checked in';
-                        }
-                    ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-```
+    This part is to display the last check in and outs.
+    ``` PHP
+        <table>
+            <thead>
+                <th>Employee</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+            </thead>
+            <tbody>
+                <?php
+                    // For loop to show the data in the table.
+                    foreach($trackerResult as $row => $value):
+                ?>
+                <tr>
+                    <td>
+                        <?=
+                            // Display employees full name. 
+                            $value['name'] . " " . $value['surname']
+                        ?>
+                    </td>
+                    <td>
+                        <?= date('Y-m-d', strtotime($value['date_time']))?>
+                    </td>
+                    <td>
+                        <?= date('H:i', strtotime($value['date_time']))?>
+                    </td>
+                    <td>
+                        <?php 
+                            // If the employee isn't "checked-in"(0) then display red otherwise display green.
+                            if($value['checked_in'] == 0){
+                                echo 'Checked out';
+                            }else{
+                                echo 'Checked in';
+                            }
+                        ?>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    ```
 
 ---
 
