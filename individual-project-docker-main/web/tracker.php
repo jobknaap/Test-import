@@ -15,7 +15,7 @@
     }
 
     // Query to get the correct data from the employees and insert data into to variable.
-    $status = "SELECT Employee.name, Employee.surname, CheckIn.checked_in FROM Employee INNER JOIN CheckIn ON Employee.employee_id = CheckIn.employee_id";
+    $status = "SELECT Employee.name, Employee.surname, (SELECT checked_in FROM CheckIn WHERE CheckIn.employee_id = Employee.employee_id ORDER BY CheckIn.date_time DESC LIMIT 1) AS checked_in  FROM Employee;";
     $statusResult = $conn->query($status);
 
     $tracker = "SELECT Employee.name, Employee.surname, CheckIn.checked_in, CheckIn.date_time FROM Employee INNER JOIN CheckIn ON Employee.employee_id = CheckIn.employee_id ORDER BY date_time DESC LIMIT 10";
