@@ -12,21 +12,14 @@ void setup() {
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000); // Waiting on connection...
   }
-}
-
-void loop() {
-  float temperature = 1.3;
-
+  String rfid = "243,90,36,21,152";
   WiFiClient client;
   HTTPClient httpClient;
 
-  httpClient.begin(client, "http://3a6ee7c462149d.lhrtunnel.link/api.php?temprature=" + String(temperature));
-  
+  httpClient.begin(client, "https://9072283bcb1826.lhrtunnel.link/select_user.php?rfid=" + rfid);
   httpClient.GET();
+}
 
-  String payload = httpClient.getString();
-
-  temperature++;
-
-  delay(5000);
+void loop() {
+  
 }
