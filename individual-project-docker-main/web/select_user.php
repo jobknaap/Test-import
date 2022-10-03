@@ -9,9 +9,9 @@
 
     $rfid = $_REQUEST['rfid'];
     
-    $query = "SELECT `Employee`.employee_id, `CheckIn`.checked_in FROM `Employee` INNER JOIN `CheckIn` ON `Employee`.employee_id = `CheckIn`.employee_id WHERE `Employee`.rfid =" . $rfid . " ORDER BY `CheckIn`.date_time DESC LIMIT 1";
-
+    $query = "SELECT Employee.employee_id, CheckIn.checked_in FROM Employee INNER JOIN CheckIn ON Employee.employee_id = CheckIn.employee_id WHERE Employee.rfid='" . $rfid . "' ORDER BY CheckIn.date_time DESC LIMIT 1";
     $result = $conn->query($query);
+    
     while ($row= $result->fetch_assoc()) {
         $employeeId = intval($row['employee_id']);
         $statusCheck = intval($row['checked_in']);
