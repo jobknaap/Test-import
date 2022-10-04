@@ -1,3 +1,4 @@
 # Wiring diagram
-Sadly in the sketch the top pins of the arduino are slightly off-center.<br>
+The Biderectional level shifters isn't the correct one. Just make sure you put the High-Voltage(HV) to the 5V of the arduino and on the same side of the level shifter the ground of the arduino. The Low-Voltage(LV) gets connected to the 3.3V on the wemos and also connect the ground on the same side. And finally put the RX of the wemos on one of the channels, for example A1 and connect the RX of the arduino on the same channel but the opposite side. The same goes for TX!<br><br>
+Also the RFID isn't the same as the WP1405 but I have wired it to match the WP1405. If you use a different scanner make sure you connect the right cables!!
 ![Picture of wiring diagram](images/Project%20sketch.png)
