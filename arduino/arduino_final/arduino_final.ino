@@ -1,18 +1,21 @@
+/*
+  @author: Job van der Knaap
+  @license: Permissive
+  Goal: The goal of this code is to Read
+*/
 #include <SPI.h>
 #include <RFID.h>
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
-#include <ESP8266WiFi.h>
-#include <ESP8266HTTPClient.h>
-#include <WiFiClient.h>
-
 
 #define IN1  2
 #define IN2  3
 #define IN3  4
 #define IN4  5
-#define trigPin 6
-#define echoPin 7
+
+#define echoPin 6
+#define trigPin 7
+
 #define RST_PIN 9
 #define SS_PIN 10
 
@@ -20,18 +23,9 @@
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 RFID rfid(SS_PIN,RST_PIN);
 
-int serNums[5];
-String serNum;
-String cards[] = {"237,131,63,89,8", "243,90,36,21,152", "145, 79, 114, 11, 167"};
-const char* ssid = "Knaapjes";
-const char* password = "Amsterdam1";
-String serverName = "http://990ebedadf1e27.lhr.life//select_user.php";
+String cards[] = {"237,131,63,89,8", "243,90,36,21,152", "145,79,114,11,167"};
+String serNum = "";
 int distance;
-int bluePin = 2;    //IN1 on the ULN2003 Board, BLUE end of the Blue/Yellow motor coil
-int pinkPin = 3;    //IN2 on the ULN2003 Board, PINK end of the Pink/Orange motor coil
-int yellowPin = 4;  //IN3 on the ULN2003 Board, YELLOW end of the Blue/Yellow motor coil
-int orangePin = 5;  
-int currentStep = 0;
 
 int paso [4][4] =
 {
@@ -45,94 +39,47 @@ void setup() {
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 
-  pinMode(bluePin, OUTPUT);
-  pinMode(pinkPin, OUTPUT);
-  pinMode(yellowPin, OUTPUT);
-  pinMode(orangePin,OUTPUT);
-  
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4,OUTPUT);
+
+  Serial.begin(9600);
   lcd.begin();
   SPI.begin();
   rfid.init();
-
-  Serial.begin(9600);
-  WiFi.begin(ssid, password);
-  Serial.println("Connecting");
-  
-  while(WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  
-  Serial.println("");
-  Serial.print("Connected to WiFi network with IP Address: ");
-  Serial.println(WiFi.localIP());
-
   lcd.backlight();
   setBeginScreen();
   
 }
 
-void loop() {  
-  if (WiFi.status()== WL_CONNECTED){
-    WiFiClient client;
-    HTTPClient http;
+void loop() {        
+  if(rfid.isCard()) {
+            
+    if(rfid.readCardSerial()) {       
+      serNum = convertRfid(rfid.serNum);
 
-    for (int i=0; i<sizeof(serNums); i++){
-        serNum = serNum + String(serNums[i]);
-      }
-      
-    if(rfid.isCard()) {        
-      if(rfid.readCardSerial()) {        
-        if(serNum == cards[0]) {
-          Serial.write(serNum);
-          setWelcomeScreen("Job");
-          delay(500);
-          do {
-            distance = getDistance();
-          } while (distance > 25);
-
-          turnGate();
-          setBeginScreen();
-          break;
-          
-        } else if(serNum == cards[1]) {
-          Serial.write(serNum);
-          setWelcomeScreen("Mats");
-          delay(500);
-          do {
-            distance = getDistance();
-          } while (distance > 25);
-
-          turnGate();
-          setBeginScreen();
-          break;
-          
-        } else if(serNum == cards[2]) {
-          Serial.write(serNum);
-          setWelcomeScreen("OV");
-          delay(500);
-          do {
-            distance = getDistance();
-          } while (distance > 25);
-
-          turnGate();
-          setBeginScreen();
-          break;
-          
-        } else {
-          setTryScreen();
-          delay(1500);
-          setBeginScreen();
-          break;
-        }
+      // Checks if the card that is presented is a valid card.
+      if(serNum == cards[0]) {
+        Serial.print(serNum);
+        setWelcomeScreen("Job");
+        do {
+          distance = getDistance();
+          delay(10);
+        } while (distance > 25);
+        turnGate(paso);
+        setBeginScreen();
+      } else {
+        setTryScreen();
+        delay(1500);
+        setBeginScreen();
       }
     }
-    delay(500);
-    rfid.halt();  
-  } else {
-    setErrorScreen();
+    delay(500);  
   }
+  rfid.halt();
 }
+  
 
 void setBeginScreen(){
   lcd.clear();
@@ -181,11 +128,12 @@ int getDistance(){
   return distance;
 }
 
-void turnGate(){
-  digitalWrite(bluePin, LOW);
-  digitalWrite(pinkPin, LOW);
-  digitalWrite(yellowPin, LOW);
-  digitalWrite(orangePin, LOW);
+void turnGate(int settings[4][4]){
+  delay(500);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
 
   unsigned long starttime = millis();
   unsigned long endtime = starttime;
@@ -202,4 +150,14 @@ void turnGate(){
     }
     endtime = millis();
   }
+}
+
+String convertRfid(unsigned char *serNums){
+  String serNum;
+  for (int i=0; i<5; i++){
+    serNum = serNum + String(serNums[i]) + ",";
+  }
+  int strSize = serNum.length();
+  serNum.remove(strSize -1);
+  return serNum;
 }
