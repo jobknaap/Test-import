@@ -23,13 +23,11 @@ void setup() {
 void loop() {
 //  WiFiClient client;
 //  HTTPClient http;
-
-  while(Serial.available()){
-    delay(1);
-    if (Serial.available() > 0){
-      String rfid = Serial.readString(); //"237,131,63,89,8";   // It will read the incoming or arriving data byte  
-      Serial.println(rfid);
-    }
+  if(Serial.available()>0){
+    Serial.print("available device");   
+    String rfid = Serial.readString(); //"237,131,63,89,8";   // It will read the incoming or arriving data byte  
+    Serial.println(rfid);
+  }
 //    String serverPath = serverName + "?rfid=" + rfid;
 //    
 //    // Your Domain name with URL path or IP address with path
@@ -48,6 +46,5 @@ void loop() {
 //    }
 //    // Free resources
 //    http.end();
-  }
 //  delay(20000);
 }
