@@ -1,7 +1,9 @@
 /*
   @author: Job van der Knaap
   @license: Permissive
-  Goal: The goal of this code is to Read
+  Goal: The arduino uno is used to be the brains of the project by activating
+  the sensors and actuators, but also send important data to the wemos to
+  send to the database.
 */
 
 // Libraries
@@ -24,6 +26,7 @@
 #define RST_PIN 9
 #define SS_PIN 10
 
+// Constant variables
 #define THRESHOLD_DISTANCE_ULTRSONIC 25
 #define SPEED_OF_SOUND_WAVE 0.034
 
