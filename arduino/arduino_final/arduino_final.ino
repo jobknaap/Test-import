@@ -8,6 +8,7 @@
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
 
+// Pins for the stepmotor with u;m
 #define IN1  2
 #define IN2  3
 #define IN3  4
@@ -19,12 +20,11 @@
 #define RST_PIN 9
 #define SS_PIN 10
 
-
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 RFID rfid(SS_PIN,RST_PIN);
 
 String cards[] = {"237,131,63,89,8", "243,90,36,21,152", "145,79,114,11,167"};
-String serNum = "";
+String serNum;
 int distance;
 
 int paso [4][4] =
@@ -47,6 +47,7 @@ void setup() {
   Serial.begin(9600);
   lcd.begin();
   SPI.begin();
+  
   rfid.init();
   lcd.backlight();
   setBeginScreen();
@@ -61,12 +62,12 @@ void loop() {
 
       // Checks if the card that is presented is a valid card.
       if(serNum == cards[0]) {
-        Serial.print(serNum);
         setWelcomeScreen("Job");
         do {
           distance = getDistance();
           delay(10);
         } while (distance > 25);
+        Serial.print(serNum);
         turnGate(paso);
         setBeginScreen();
       } else {
